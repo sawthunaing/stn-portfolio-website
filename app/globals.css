@@ -2,27 +2,27 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-/* Palette: cool paper + British racing green (light), deep pine + mint (dark) */
+/* Palette: cool paper + sky blue (light), deep navy + pale sky (dark) */
 :root {
-  --bg: #f3f5f4;
+  --bg: #f4f7fa;
   --surface: #ffffff;
-  --ink: #14201b;
-  --muted: #56635d;
-  --line: #d9e0dc;
-  --accent: #1f5c45;
-  --accent-soft: #e2eee8;
+  --ink: #0f1c2b;
+  --muted: #526173;
+  --line: #d8e1ea;
+  --accent: #0369a1;
+  --accent-soft: #e0f2fe;
   --accent-ink: #ffffff;
 }
 
 .dark {
-  --bg: #0f1714;
-  --surface: #16211c;
-  --ink: #e7eeea;
-  --muted: #9aaba3;
-  --line: #27352e;
-  --accent: #7ccfa8;
-  --accent-soft: #1c2e26;
-  --accent-ink: #0f1714;
+  --bg: #0c1520;
+  --surface: #132131;
+  --ink: #e6eef6;
+  --muted: #94a8bd;
+  --line: #22344a;
+  --accent: #7dd3fc;
+  --accent-soft: #11283a;
+  --accent-ink: #0c1520;
 }
 
 @theme inline {
@@ -61,7 +61,7 @@ dialog[open] {
 }
 
 dialog::backdrop {
-  background: rgb(8 14 11 / 0.55);
+  background: rgb(8 12 20 / 0.55);
   backdrop-filter: blur(2px);
 }
 

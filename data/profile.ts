@@ -37,6 +37,16 @@ export type Profile = {
   extraFacts: string[];
   suggestedQuestions: string[];
   faq: { question: string; answer: string }[];
+  projectRoles: { id: string; label: string }[];
+  projects: {
+    title: string;
+    description: string;
+    highlights: string[];
+    tech: string[];
+    roles: string[];
+    repo?: string;
+    live?: string;
+  }[];
 };
 
 export const profile: Profile = {
@@ -232,6 +242,96 @@ export const profile: Profile = {
       question: "What payment systems have you built?",
       answer:
         "I've built payment systems across several banks and fintechs, including the Onepay digital wallet for Asia Green Development Bank (the first locally developed wallet in Myanmar) and the uabpay payment gateway at uab bank. At Abank I engineered an Ocelot-based API Gateway supporting VISA card integration, a dynamic SOA-based Bill Payment System, and a cross-border remittance disbursement system integrated with Dee Money. My payment integration experience spans VISA, Mastercard, Alipay and WeChat Pay, plus EMV QR code and core banking systems. Most recently, at Synergy Logic I've enhanced payment-related microservices, cutting message processing errors by around 30%.",
+    },
+  ],
+
+  projectRoles: [
+    { id: "devops", label: "DevOps" },
+    { id: "dotnet", label: ".NET" },
+    { id: "java", label: "Java" },
+    { id: "python", label: "Python" },
+  ],
+
+  projects: [
+    {
+      title: "AWS Monitoring & CI/CD Platform",
+      description:
+        "An end-to-end DevOps platform on AWS: infrastructure provisioned with CloudFormation, configured with Ansible, monitored with Prometheus and Grafana, and continuously deployed through a GitLab CI/CD pipeline that ships a .NET 8 application to EC2.",
+      highlights: [
+        "Provisioned a full VPC and five EC2 instances from a single CloudFormation template, configured entirely with Ansible roles for Prometheus, Grafana, AlertManager and MySQL.",
+        "Built a GitLab CI/CD pipeline that builds, runs EF Core migrations and deploys a .NET 8 Web API to EC2 on every push, restarting it under systemd.",
+        "Applied least-privilege security groups (SG-to-SG references) and separate database accounts for the running app versus schema migrations.",
+      ],
+      tech: ["AWS CloudFormation", "Ansible", "Prometheus", "Grafana", "GitLab CI/CD", ".NET 8", "MySQL"],
+      roles: ["devops", "dotnet"],
+      repo: "https://github.com/sawthunaing/aws-monitoring-cicd",
+    },
+    {
+      title: "Serverless Price-Data Pipeline",
+      description:
+        "An event-driven, serverless data pipeline on AWS that ingests price data from CSV files, processes and stores it reliably, and serves it through a REST API, with automatic retries and failure alerting.",
+      highlights: [
+        "Built an event-driven ingest path (S3 to EventBridge to Step Functions to Lambda to DynamoDB) with idempotent writes keyed by commodity and date.",
+        "Added automatic retry with exponential backoff and an SNS email alert when the workflow exhausts its retries.",
+        "Exposed a GET /prices REST API through API Gateway and Lambda to serve the stored data as JSON.",
+      ],
+      tech: ["AWS Lambda", "Step Functions", "DynamoDB", "S3", "EventBridge", "SNS", "API Gateway", "Python"],
+      roles: ["devops", "python"],
+      repo: "https://github.com/sawthunaing/serverless-price-pipeline",
+    },
+    {
+      title: "Ansible + Docker Lab",
+      description:
+        "A self-contained infrastructure lab that provisions three Ubuntu nodes and an Ansible control node as Docker containers, configures them with an idempotent playbook, and ships a Flask dashboard for live node status and one-click playbook runs.",
+      highlights: [
+        "Modelled a full IaC lab (three managed nodes plus one control node) in Docker Compose on a private bridge network, managed agentlessly over SSH.",
+        "Built a Flask dashboard for live node health and one-click playbook execution, backed by the same ansible-playbook commands as the CLI.",
+        "Demonstrated Ansible idempotency: re-running the playbook flips every task from changed to ok.",
+      ],
+      tech: ["Ansible", "Docker", "Docker Compose", "Flask", "Python"],
+      roles: ["devops", "python"],
+      repo: "https://github.com/sawthunaing/ansible-docker-lab",
+    },
+    {
+      title: "AI-Powered .NET Application",
+      description:
+        "An ASP.NET Core news platform that aggregates articles and uses AI to summarise and categorise them automatically.",
+      highlights: [
+        "Aggregates news articles from multiple sources into a single feed.",
+        "Uses AI to generate summaries and categorise articles automatically.",
+      ],
+      tech: ["ASP.NET Core", "AI Integration"],
+      roles: ["dotnet"],
+    },
+    {
+      title: ".NET Core API Gateway",
+      description: "A .NET Core API Gateway that routes client requests to backend microservices.",
+      highlights: ["Centralised routing layer directing client requests to the appropriate backend microservice."],
+      tech: [".NET Core", "API Gateway", "Microservices"],
+      roles: ["dotnet"],
+    },
+    {
+      title: "Applewear Microservices CMS",
+      description:
+        "A Spring Boot microservices CMS for managing product and content data for an e-commerce clothing brand, with Spring Cloud Gateway routing requests across services.",
+      highlights: [
+        "Built as independent Spring Boot microservices, fronted by Spring Cloud Gateway for request routing.",
+      ],
+      tech: ["Java", "Spring Boot", "Spring Cloud Gateway", "Microservices"],
+      roles: ["java"],
+    },
+    {
+      title: "Job Hunting AI",
+      description:
+        "An AI-powered job application platform that scores how well a job fits your profile, tailors your CV per job, preps you for interviews, and tracks your pipeline.",
+      highlights: [
+        "Extracts structured job data from any listing URL and scores fit 0-100 against your profile, with matched/missing skills and reasoning.",
+        "Auto-generates a tailored CV and interview prep per job, using an adaptive OpenAI integration that auto-detects each model's parameter conventions.",
+        "Tracks the application pipeline (New to Applied to Interviewing to Offer) with conversion-rate funnels and score-based filtering.",
+      ],
+      tech: ["Next.js", "TypeScript", "FastAPI", "PostgreSQL", "OpenAI", "Docker", "Terraform"],
+      roles: ["python"],
+      repo: "https://github.com/sawthunaing/stn-job-hunting-dashboard-with-ai",
     },
   ],
 };

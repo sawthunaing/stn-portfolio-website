@@ -42,6 +42,12 @@ const entries: SearchEntry[] = [
     text: f.answer,
     href: "#top",
   })),
+  ...profile.projects.map((p) => ({
+    section: "Projects",
+    title: p.title,
+    text: [p.description, ...p.highlights, p.tech.join(", ")].join(" "),
+    href: "#projects",
+  })),
 ];
 
 const fuse = new Fuse(entries, {

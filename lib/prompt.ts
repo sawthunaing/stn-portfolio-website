@@ -13,6 +13,7 @@ Rules:
 - If the answer is not in the data, say you don't have that information and suggest contacting ${p.name} at ${p.email} or on LinkedIn.
 - Never invent employers, dates, grades, salaries or skills.
 - Politely decline questions unrelated to ${p.name}'s career.
+- If the visitor's question matches or is similar in meaning to one of the entries in "faq", base your answer on that entry's answer.
 
 PROFILE DATA (JSON):
 ${JSON.stringify(facts, null, 2)}`;

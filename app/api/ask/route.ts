@@ -24,7 +24,7 @@ function isRateLimited(ip: string): boolean {
 async function askGemini(question: string): Promise<string> {
   const key = process.env.GEMINI_API_KEY;
   if (!key) throw new Error("Gemini key missing");
-  const model = process.env.GEMINI_MODEL || "gemini-2.5-flash";
+  const model = process.env.GEMINI_MODEL || "gemini-3.6-flash";
   const res = await fetch(
     `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`,
     {
@@ -33,7 +33,7 @@ async function askGemini(question: string): Promise<string> {
       body: JSON.stringify({
         systemInstruction: { parts: [{ text: SYSTEM_PROMPT }] },
         contents: [{ role: "user", parts: [{ text: question }] }],
-        generationConfig: { temperature: 0.3, maxOutputTokens: 1024 },
+        generationConfig: { temperature: 0.3, maxOutputTokens: 2048 },
       }),
     }
   );

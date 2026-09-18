@@ -36,6 +36,12 @@ const entries: SearchEntry[] = [
     href: "#education",
   })),
   { section: "Right to work", title: "Right to work", text: `${profile.rightToWork} ${profile.availability}`, href: "#top" },
+  ...profile.faq.map((f) => ({
+    section: "Q&A",
+    title: f.question,
+    text: f.answer,
+    href: "#top",
+  })),
 ];
 
 const fuse = new Fuse(entries, {

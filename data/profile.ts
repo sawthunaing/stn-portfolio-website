@@ -36,6 +36,7 @@ export type Profile = {
   }[];
   extraFacts: string[];
   suggestedQuestions: string[];
+  faq: { question: string; answer: string }[];
 };
 
 export const profile: Profile = {
@@ -224,5 +225,13 @@ export const profile: Profile = {
     "Tell me about your latest role",
     "Which cloud certifications do you hold?",
     "What is your right to work status?",
+  ],
+
+  faq: [
+    {
+      question: "What payment systems have you built?",
+      answer:
+        "I've built payment systems across several banks and fintechs, including the Onepay digital wallet for Asia Green Development Bank (the first locally developed wallet in Myanmar) and the uabpay payment gateway at uab bank. At Abank I engineered an Ocelot-based API Gateway supporting VISA card integration, a dynamic SOA-based Bill Payment System, and a cross-border remittance disbursement system integrated with Dee Money. My payment integration experience spans VISA, Mastercard, Alipay and WeChat Pay, plus EMV QR code and core banking systems. Most recently, at Synergy Logic I've enhanced payment-related microservices, cutting message processing errors by around 30%.",
+    },
   ],
 };
